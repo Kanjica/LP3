@@ -1,7 +1,8 @@
+package set2;
+
 import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.util.Date;
-
 import javax.swing.JOptionPane;
 
 public class ClienteTCPBasico {

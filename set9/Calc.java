@@ -1,3 +1,5 @@
+package set9;
+
 public class Calc {
 
     private int n1,n2,res = 0;
