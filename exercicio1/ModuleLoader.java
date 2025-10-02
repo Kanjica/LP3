@@ -1,7 +1,9 @@
+package exercicio1;
+
 public class ModuleLoader implements Runnable{
-    private String module;
-    private int sleep; 
-    private ServerInitializer latch; 
+    private final String module;
+    private final int sleep; 
+    private final ServerInitializer latch; 
 
     public ModuleLoader(String module, int sleep, ServerInitializer latch){
         this.module = module;
@@ -10,6 +12,7 @@ public class ModuleLoader implements Runnable{
     }
 
     @Override
+    @SuppressWarnings("CallToPrintStackTrace")
     public void run() {
         System.out.println("#######Iniciando Módulo de " + module + " #######");
         try {

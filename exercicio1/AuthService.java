@@ -1,3 +1,6 @@
+package exercicio1;
+
+import java.io.IOException;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -13,12 +16,11 @@ public class AuthService{
             initializer.waitForInitialization();
             initializer.startServer();
 
-        } catch (Exception e) {
+        } catch (IOException | InterruptedException e) {
             System.out.println("Deu erro pcr" + e.getMessage());
         } finally {
 
         }
-
     }
 
     public static void initializerModules(ExecutorService executor, ServerInitializer initializer){
