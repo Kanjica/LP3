@@ -21,7 +21,7 @@ public class CorridaComArbitro{
                 }
 
                 if(vencedorDefinido.compareAndSet(false, true)){
-                    System.out.println("🏆 O Corredor " + Thread.currentThread().getName() + " venceu a corrida!");
+                    System.out.println("O Corredor " + Thread.currentThread().getName() + " venceu a corrida!");
                 }
                 else {
                     System.out.println("O Corredor " + Thread.currentThread().getName() + " terminou a corrida.");
