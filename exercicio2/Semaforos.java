@@ -1,4 +1,4 @@
-package Estacionamento;
+package exercicio2;
 
 import java.util.concurrent.Semaphore;
 
