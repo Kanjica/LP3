@@ -25,8 +25,14 @@ class Pedido implements Comparable<Pedido> {
     // TODO: Implementar compareTo para ordenar por prioridade e timestamp
     @Override
     public int compareTo(Pedido outro) {
-        // Implementar comparação
-        return 0;
+        
+        int comparacaoPrioridade = prioridade.compareTo(outro.prioridade);
+        
+         if (comparacaoPrioridade != 0) {
+            return comparacaoPrioridade;
+        }
+
+        return timestamp.compareTo(outro.timestamp);
     }
     
     // Getters

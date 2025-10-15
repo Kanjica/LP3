@@ -22,20 +22,17 @@ class Consumidor implements Runnable {
     public void run() {
         try {
             while (true) {
-            
-                Pedido pedido = fila.poll();
+                // TODO: Remover pedido da fila com timeout (poll com 5 segundos)
+                Pedido pedido = fila.poll(5, TimeUnit.SECONDS);
 
-                if(!(pedido == null)){
-                    //processando pedido
-                    estoque.consultarEstoque(pedido.getProduto());
-                }
-                else{
-                    break;
-                }   
+                // Se null, significa que não há mais pedidos, pode encerrar
                 
+                if(pedido==null) break;
+
                 // TODO: Processar pedido
+                processarPedido(pedido);
+
                 // TODO: Se null, break do loop
-                Thread.sleep(1);
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
@@ -47,8 +44,23 @@ class Consumidor implements Runnable {
     private void processarPedido(Pedido pedido) throws InterruptedException {
         // TODO: Implementar processamento
         // 1. Verificar estoque
+        String produto = pedido.getProduto();
+        int quantidade = pedido.getQuantidade();
+
         // 2. Reservar estoque
+        boolean reservou = estoque.reservarEstoque(produto, quantidade);
+
         // 3. Simular processamento (100-300ms)
+        Thread.sleep(new Random().nextInt(100,300));
+        
         // 4. Atualizar estatísticas
+        if(reservou){
+            stats.registrarPedidoProcessado();
+            System.out.println("Pedido reservado");
+        }
+        else{
+            stats.registrarPedidoRejeitado();
+            System.out.println("Pedido não reservado");
+        }
     }
 }

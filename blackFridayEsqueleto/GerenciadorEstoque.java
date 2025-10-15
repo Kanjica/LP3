@@ -22,52 +22,55 @@ class GerenciadorEstoque {
     }
     
     public int consultarEstoque(String produto) {
-        Lock lock = readWriteLock.readLock();
+        // TODO: Implementar consulta com read lock
+        
+        try{
+            readWriteLock.readLock().lock();
 
-        lock.lock();
-        try {
             Integer quantidade = estoque.get(produto);
-            return quantidade == null? 0: quantidade;
-        } finally {
-            lock.unlock();
-        }
 
+            return quantidade != null? quantidade : 0;
+        } finally{
+            readWriteLock.readLock().unlock();
+        }
     }
     
     public boolean reservarEstoque(String produto, int quantidade) {
-        Lock lock = readWriteLock.writeLock();
+        // TODO: Implementar reserva com write lock
+        try{
+            // 1. Adquirir write lock
+            readWriteLock.writeLock().lock();
 
-        // 1. Adquirir write lock
-        lock.lock();
-
-        try {
             // 2. Verificar se tem estoque suficiente
-            if(consultarEstoque(produto)>=quantidade){
+            int quantidadeEmEstoque = consultarEstoque(produto);
+
+            if(quantidade >= quantidadeEmEstoque){
                 // 3. Decrementar estoque
-                estoque.put(produto, quantidade);
+                estoque.put(produto, quantidade - quantidadeEmEstoque);
                 return true;
             }
             return false;
-            
-        } finally {
+        }
+        finally{
             // 4. Liberar lock
-            lock.unlock();
+            readWriteLock.writeLock().unlock();
         }
     }
     
     public void devolverEstoque(String produto, int quantidade) {
-        Lock lock = readWriteLock.writeLock();
-
-        lock.lock();
-
-        try {
-            if(consultarEstoque(produto)>=quantidade){
-                // 3. Decrementar estoque
-                estoque.put(produto, quantidade);
+        try{
+            readWriteLock.writeLock().lock();
+            if(estoque.containsKey(produto)){
+                estoque.put(produto, consultarEstoque(produto) + quantidade);
+                System.out.println("Devolvido");
             }
-        } finally {
-            lock.unlock();
+            else{
+                System.out.println("Não devolvido");
+            }
+        }finally{
+            readWriteLock.writeLock().unlock();
         }
+
     }
     
     public void exibirEstoque() {

@@ -27,9 +27,12 @@ class Produtor implements Runnable {
             for (int i = 0; i < quantidadePedidos; i++) {
                 // TODO: Gerar pedido aleatório
                 // TODO: Adicionar na fila usando put()
+                fila.put(gerarPedidoAleatorio());
+
                 // TODO: Registrar nas estatísticas
+
+                stats.registrarPedidoGerado();
                 // TODO: Simular delay entre pedidos (50-200ms)
-                
                 Thread.sleep(random.nextInt(150) + 50);
             }
             System.out.println("[" + fonte + "] Finalizou geração de pedidos");
@@ -40,6 +43,15 @@ class Produtor implements Runnable {
     
     private Pedido gerarPedidoAleatorio() {
         // TODO: Implementar geração aleatória
-        return null;
+        String cliente = CLIENTES[random.nextInt(CLIENTES.length)];
+        String produto = PRODUTOS[random.nextInt(PRODUTOS.length)];
+
+        PrioridadePedido[] prioridades = PrioridadePedido.values();
+    
+        int indiceAleatorio = random.nextInt(prioridades.length);
+        
+        PrioridadePedido prioridade = prioridades[indiceAleatorio];
+
+        return new Pedido(cliente, produto, random.nextInt(1, 15), prioridade);
     }
 }
