@@ -16,6 +16,7 @@ public class SalaCinema {
     private Lock lock;
     
     public SalaCinema(){
+        // criando a lista de cadeiras com stream
         this.cadeiras = IntStream.rangeClosed(0, 20) 
                 .mapToObj(numero -> new Cadeira(numero)) 
                 .collect(Collectors.toCollection(ArrayList::new));
@@ -26,9 +27,10 @@ public class SalaCinema {
     public Cadeira comprarIngresso(){
         lock.lock();
         try{
+            //verifica se a cadeira está disponivel
             Optional<Cadeira> cadeiraDisponivel = this.cadeiras.stream()
                                                 .filter(Cadeira::isDisponivel).findFirst();
-    
+            //se disponivel muda o estado e define a fileira e coluna da cadeira
             cadeiraDisponivel.ifPresent(cadeira->{
                 cadeira.setDisponivel(false);
                 int nCadeira = cadeira.getnCadeira();
@@ -37,8 +39,10 @@ public class SalaCinema {
                 int coluna = (nCadeira % cadeirasPorFileira) + 1; //y
                 cadeira.setX(fileira);
                 cadeira.setY(coluna);
+                //aumenta a quantidade de ingressos vendidos
                 ingressosVendidos.getAndIncrement();
             });
+            //retorna a cadeira, caso não consiga retorna null
             return cadeiraDisponivel.orElse(null);
         } finally{
             lock.unlock();
