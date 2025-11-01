@@ -1,4 +1,4 @@
-package cinema;
+package concorrencia.cinema;
 
 public class Cliente implements Runnable{
 

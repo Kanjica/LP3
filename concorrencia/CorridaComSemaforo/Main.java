@@ -1,4 +1,5 @@
-package CorridaComSemaforo;import java.util.Random;
+package concorrencia.CorridaComSemaforo;
+import java.util.Random;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;

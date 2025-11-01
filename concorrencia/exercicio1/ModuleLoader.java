@@ -1,4 +1,4 @@
-package exercicio1;
+package concorrencia.exercicio1;
 
 public class ModuleLoader implements Runnable{
     private final String module;

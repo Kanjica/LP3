@@ -17,7 +17,8 @@ public class ClienteImpl extends UnicastRemoteObject implements InterfaceCliente
         System.out.println("Notificação recebida: " + mensagem);
     }
 
-    public String getNome() {
+    @Override
+    public String getNome(){
         return nome;
     }
 }

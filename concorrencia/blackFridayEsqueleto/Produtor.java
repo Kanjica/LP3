@@ -1,4 +1,4 @@
-package blackFridayEsqueleto;
+package concorrencia.blackFridayEsqueleto;
 
 import java.util.Random;
 import java.util.concurrent.*;

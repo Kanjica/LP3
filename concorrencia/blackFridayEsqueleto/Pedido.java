@@ -1,4 +1,4 @@
-package blackFridayEsqueleto;
+package concorrencia.blackFridayEsqueleto;
 
 import java.time.LocalDateTime;
 import java.util.concurrent.atomic.AtomicInteger;

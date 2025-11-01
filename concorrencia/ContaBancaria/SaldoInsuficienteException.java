@@ -1,4 +1,4 @@
-package ContaBancaria;
+package concorrencia.ContaBancaria;
 
 public class SaldoInsuficienteException extends Exception {
     public SaldoInsuficienteException(double valor) {

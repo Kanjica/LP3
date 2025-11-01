@@ -1,4 +1,4 @@
-package cinema;
+package concorrencia.cinema;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,6 +2,7 @@ package rmi;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Cliente {
@@ -25,9 +26,21 @@ public class Cliente {
 
                 if (comando.startsWith("lance")) {
                     double valor = Double.parseDouble(comando.split(" ")[1]);
-                    sistema.ofertarLance(valor);
-                } else if (comando.equalsIgnoreCase("sair")) {
-                    System.out.println("Saindo do leilão...");
+                    sistema.ofertarLance(valor, cliente);
+                } 
+                else if(comando.equalsIgnoreCase("maior lance")){
+                    try {
+                        Lance maiorLance = sistema.consultarMaiorLance();
+                        System.out.println("\nO maior lance é de R$ " + maiorLance.lanceFeito() + " feito por " + maiorLance.cliente().getNome());
+                    } catch (NoSuchElementException e) {
+                        System.out.println("\nNão há lances registrados ainda.");
+                    }
+                }   
+                else if(comando.equalsIgnoreCase("historico")){
+                    System.out.println("\n"+sistema.consultarHistorico());
+                }
+                else if (comando.equalsIgnoreCase("sair")) {
+                    sistema.sairDoLeilao(cliente);
                     break;
                 }
             }

@@ -1,4 +1,4 @@
-package exercicio2;
+package concorrencia.exercicio2;
 
 import java.util.concurrent.Semaphore;
 
