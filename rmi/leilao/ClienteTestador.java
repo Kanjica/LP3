@@ -1,4 +1,4 @@
-package rmi;
+package rmi.leilao;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -26,9 +26,23 @@ public class ClienteTestador {
                 System.out.println(sistema.registrarReceberNotificacao(nome, eu));
                 Random random = new Random();
                 while (true) {
-                    Double ultimoMaiorLance = sistema.consultarMaiorLance().lanceFeito();
-                    sistema.ofertarLance(random.nextDouble(ultimoMaiorLance+0.1, (ultimoMaiorLance+random.nextDouble(5, 4000))),eu);
-                    TimeUnit.MILLISECONDS.sleep(200);
+
+                    int acao = new Random().nextInt(0, 100);
+
+                    if(acao >= 0 && acao <= 90){
+                        Double ultimoMaiorLance = sistema.consultarMaiorLance().lanceFeito();
+                        sistema.ofertarLance(random.nextDouble(ultimoMaiorLance+0.1, (ultimoMaiorLance+random.nextDouble(5, 4000))),eu);
+                    }
+                    else if(acao <= 93){
+                        sistema.consultarHistorico();
+                    } 
+                    else if(acao <= 96){
+                        sistema.consultarMaiorLance();
+                    }
+                    else if (acao <=100){
+                        sistema.sairDoLeilao(eu);
+                    }
+                    TimeUnit.MILLISECONDS.sleep(400);
                 }
             } catch (RemoteException e) {
                 e.printStackTrace();

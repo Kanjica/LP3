@@ -1,11 +1,9 @@
-package rmi;
+package rmi.leilao;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.locks.ReadWriteLock;
@@ -19,6 +17,7 @@ public class InterfaceLeilaoImpl extends UnicastRemoteObject implements Interfac
     private ReadWriteLock locksCliente = new ReentrantReadWriteLock();
 
     private InterfaceCliente interfaceUsadaParaBostadeNada = new ClienteImpl("servidor");
+    
     protected InterfaceLeilaoImpl() throws RemoteException {
         super();
     }

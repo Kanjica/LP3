@@ -1,4 +1,4 @@
-package rmi;
+package rmi.leilao;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;

@@ -1,4 +1,4 @@
-package rmi;
+package rmi.leilao;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;

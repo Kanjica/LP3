@@ -1,4 +1,4 @@
-package rmi;
+package rmi.leilao;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
