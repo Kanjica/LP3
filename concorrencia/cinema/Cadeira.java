@@ -1,4 +1,4 @@
-package concorrencia.cinema;
+package cinema;
 
 public class Cadeira {
     

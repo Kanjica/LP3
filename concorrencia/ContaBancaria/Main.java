@@ -1,4 +1,4 @@
-package concorrencia.ContaBancaria;
+package ContaBancaria;
 
 import java.sql.Time;
 import java.util.ArrayList;

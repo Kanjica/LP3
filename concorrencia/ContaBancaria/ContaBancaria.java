@@ -1,4 +1,4 @@
-package concorrencia.ContaBancaria;
+package ContaBancaria;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;

@@ -1,4 +1,4 @@
-package concorrencia.blackFridayEsqueleto;
+package blackFridayEsqueleto;
 
 import java.util.ArrayList;
 import java.util.List;

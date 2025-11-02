@@ -1,4 +1,4 @@
-package concorrencia.CorridaComSemaforo;
+package CorridaComSemaforo;
 import java.util.Random;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.CountDownLatch;

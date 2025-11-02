@@ -1,4 +1,4 @@
-package concorrencia.exercicio2;
+package exercicio2;
 
 import java.util.Random;
 import java.util.concurrent.Callable;

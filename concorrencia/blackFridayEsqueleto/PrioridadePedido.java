@@ -1,4 +1,4 @@
-package concorrencia.blackFridayEsqueleto;
+package blackFridayEsqueleto;
 
 enum PrioridadePedido {
     ALTA(1),

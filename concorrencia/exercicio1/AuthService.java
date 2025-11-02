@@ -1,4 +1,4 @@
-package concorrencia.exercicio1;
+package exercicio1;
 
 import java.io.IOException;
 import java.util.Random;
